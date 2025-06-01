@@ -4,9 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:build": "docker build -t corebreak .",
+    "docker:run": "docker run -p 5173:5173 corebreak"
   },
   "devDependencies": {
     "typescript": "~5.8.3",
