@@ -1,6 +1,6 @@
 import './homepage.css';
 
-export function renderHomePage() {
+export function renderHomePage(onNavigate: (page: string) => void) {
     // Create main container
     const container = document.createElement('div');
     container.className = 'homepage-container';
@@ -24,10 +24,15 @@ export function renderHomePage() {
     const buttonGroup = document.createElement('div');
     buttonGroup.className = 'button-group';
 
+
     buttons.forEach(({ id, label }) => {
         const btn = document.createElement('button');
         btn.id = id;
         btn.textContent = label;
+
+        if (id === 'rules') {
+            btn.onclick = () => onNavigate('rules');
+        }
         buttonGroup.appendChild(btn);
     });
 
@@ -42,5 +47,14 @@ export function renderHomePage() {
     homepageFooter.textContent = '© 2025 CoreBreak';
     container.appendChild(homepageFooter);
 
+    return container;
+}
+
+// rules.js
+export function renderRulesPage(onNavigate) {
+    const container = document.createElement('div');
+    container.className = 'rules-container';
+    container.innerHTML = '<h1>Rules Page</h1><button id="back">Retour</button>';
+    container.querySelector('#back').onclick = () => onNavigate('home');
     return container;
 }
