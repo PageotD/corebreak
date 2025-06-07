@@ -1,7 +1,13 @@
 import './homepage.css';
 import footerHTML from '../../data/local/footer.html?raw';
 
-function renderFooter() {
+function createTitle() {
+    const title = document.createElement('h1');
+    title.textContent = 'CoreBreak';
+    return title;
+}
+
+function createFooter() {
     const footer = document.createElement('footer');
     footer.className = 'footer';
     footer.innerHTML = footerHTML;
@@ -14,9 +20,7 @@ export function renderHomePage(onNavigate: (page: string) => void) {
     container.className = 'homepage-container';
 
     // Main title
-    const title = document.createElement('h1');
-    title.textContent = 'CoreBreak';
-    container.appendChild(title);
+    container.appendChild(createTitle());
 
     // Button container
     const homepageButtonContainer = document.createElement('div');
@@ -57,7 +61,7 @@ export function renderHomePage(onNavigate: (page: string) => void) {
     container.appendChild(homepageButtonContainer);
 
     // Create footer
-    container.appendChild(renderFooter());
+    container.appendChild(createFooter());
 
     return container;
 }
