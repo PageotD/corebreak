@@ -6,12 +6,17 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
+    "test": "vitest --environment jsdom",
     "preview": "vite preview",
     "docker:build": "docker build -t corebreak .",
     "docker:run": "docker run -p 5173:5173 corebreak"
   },
   "devDependencies": {
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^3.2.2"
+  },
+  "dependencies": {
+    "jsdom": "^26.1.0"
   }
 }
