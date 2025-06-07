@@ -18,7 +18,7 @@ export function renderHomePage(onNavigate: (page: string) => void) {
     const buttons = [
         { id: 'play', label: 'Play' },
         { id: 'rules', label: 'Rules' },
-        { id: 'credits', label: 'Credits' }
+        { id: 'ranking', label: 'Ranking' }
     ];
 
     const buttonGroup = document.createElement('div');
