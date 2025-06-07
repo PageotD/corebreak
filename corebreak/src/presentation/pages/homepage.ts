@@ -1,3 +1,5 @@
+import './homepage.css';
+
 export function renderHomePage() {
     // Create main container
     const container = document.createElement('div');
@@ -7,6 +9,10 @@ export function renderHomePage() {
     const title = document.createElement('h1');
     title.textContent = 'CoreBreak';
     container.appendChild(title);
+
+    // Button container
+    const homepageButtonContainer = document.createElement('div');
+    homepageButtonContainer.className = 'homepage-button-container';
 
     // Create buttons
     const buttons = [
@@ -25,7 +31,11 @@ export function renderHomePage() {
         buttonGroup.appendChild(btn);
     });
 
-    container.appendChild(buttonGroup);
+    // Add buttons to container
+    homepageButtonContainer.appendChild(buttonGroup);
+
+    // Add button container to main container
+    container.appendChild(homepageButtonContainer);
 
     return container;
 }
