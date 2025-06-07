@@ -30,8 +30,14 @@ export function renderHomePage(onNavigate: (page: string) => void) {
         btn.id = id;
         btn.textContent = label;
 
+        if (id === 'play') {
+            btn.onclick = () => onNavigate('play');
+        }
         if (id === 'rules') {
             btn.onclick = () => onNavigate('rules');
+        }
+        if (id === 'ranking') {
+            btn.onclick = () => onNavigate('ranking');
         }
         buttonGroup.appendChild(btn);
     });
@@ -47,14 +53,5 @@ export function renderHomePage(onNavigate: (page: string) => void) {
     homepageFooter.textContent = '© 2025 CoreBreak';
     container.appendChild(homepageFooter);
 
-    return container;
-}
-
-// rules.js
-export function renderRulesPage(onNavigate) {
-    const container = document.createElement('div');
-    container.className = 'rules-container';
-    container.innerHTML = '<h1>Rules Page</h1><button id="back">Retour</button>';
-    container.querySelector('#back').onclick = () => onNavigate('home');
     return container;
 }

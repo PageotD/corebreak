@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [X.X.X] - YYYY-MM-DD
 
 ### Added
-- feat: create landing page
+- create landing page
+- create play page, ranking page, rules pages and rules source (html)
 
 ## [0.0.0] - 2025-06-01
 
