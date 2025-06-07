@@ -14,17 +14,11 @@ function createFooter() {
     return footer;
 }
 
-export function renderHomePage(onNavigate: (page: string) => void) {
-    // Create main container
-    const container = document.createElement('div');
-    container.className = 'homepage-container';
-
-    // Main title
-    container.appendChild(createTitle());
+function createButtonContainer(onNavigate: (page: string) => void) {
 
     // Button container
-    const homepageButtonContainer = document.createElement('div');
-    homepageButtonContainer.className = 'homepage-button-container';
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'homepage-button-container';
 
     // Create buttons
     const buttons = [
@@ -55,10 +49,22 @@ export function renderHomePage(onNavigate: (page: string) => void) {
     });
 
     // Add buttons to container
-    homepageButtonContainer.appendChild(buttonGroup);
+    buttonContainer.appendChild(buttonGroup);
+
+    return buttonContainer;
+}
+
+export function renderHomePage(onNavigate: (page: string) => void) {
+    // Create main container
+    const container = document.createElement('div');
+    container.className = 'homepage-container';
+
+    // Main title
+    container.appendChild(createTitle());
+
 
     // Add button container to main container
-    container.appendChild(homepageButtonContainer);
+    container.appendChild(createButtonContainer(onNavigate));
 
     // Create footer
     container.appendChild(createFooter());
