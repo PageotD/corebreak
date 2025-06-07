@@ -1,4 +1,12 @@
 import './homepage.css';
+import footerHTML from '../../data/local/footer.html?raw';
+
+function renderFooter() {
+    const footer = document.createElement('footer');
+    footer.className = 'footer';
+    footer.innerHTML = footerHTML;
+    return footer;
+}
 
 export function renderHomePage(onNavigate: (page: string) => void) {
     // Create main container
@@ -49,9 +57,7 @@ export function renderHomePage(onNavigate: (page: string) => void) {
     container.appendChild(homepageButtonContainer);
 
     // Create footer
-    const homepageFooter = document.createElement('footer');
-    homepageFooter.textContent = '© 2025 CoreBreak';
-    container.appendChild(homepageFooter);
+    container.appendChild(renderFooter());
 
     return container;
 }
