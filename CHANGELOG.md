@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [X.X.X] - YYYY-MM-DD
 
 ### Added
-- feat: landing page
+- feat: create landing page
 
 ## [0.0.0] - 2025-06-01
 
