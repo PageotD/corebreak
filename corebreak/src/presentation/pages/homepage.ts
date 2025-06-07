@@ -37,5 +37,10 @@ export function renderHomePage() {
     // Add button container to main container
     container.appendChild(homepageButtonContainer);
 
+    // Create footer
+    const homepageFooter = document.createElement('footer');
+    homepageFooter.textContent = '© 2025 CoreBreak';
+    container.appendChild(homepageFooter);
+
     return container;
 }
