@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - create landing page
 - create play page, ranking page, rules pages and rules source (html)
+- create login page
 
 ## [0.0.0] - 2025-06-01
 
