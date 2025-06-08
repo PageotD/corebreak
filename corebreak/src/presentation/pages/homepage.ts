@@ -1,72 +1,56 @@
 import './homepage.css';
 import footerHTML from '../../data/local/footer.html?raw';
 
-function createTitle() {
+type NavigateFn = (page: string) => void;
+
+function createTitle(): HTMLElement {
     const title = document.createElement('h1');
     title.textContent = 'CoreBreak';
     return title;
 }
 
-function createFooter() {
+function createFooter(): HTMLElement {
     const footer = document.createElement('footer');
     footer.className = 'footer';
     footer.innerHTML = footerHTML;
     return footer;
 }
 
-function createButtonContainer(onNavigate: (page: string) => void) {
+function createButton(id: string, label: string, onNavigate: NavigateFn): HTMLButtonElement {
+    const button = document.createElement('button');
+    button.id = id;
+    button.textContent = label;
+    button.onclick = () => onNavigate(id);
+    return button;
+}
 
-    // Button container
+function createButtonContainer(onNavigate: NavigateFn): HTMLElement {
     const buttonContainer = document.createElement('div');
     buttonContainer.className = 'homepage-button-container';
 
-    // Create buttons
+    const buttonGroup = document.createElement('div');
+    buttonGroup.className = 'button-group';
+
     const buttons = [
         { id: 'play', label: 'Play' },
         { id: 'rules', label: 'Rules' },
         { id: 'ranking', label: 'Ranking' }
     ];
 
-    const buttonGroup = document.createElement('div');
-    buttonGroup.className = 'button-group';
+    buttons.map(({ id, label }) =>
+        buttonGroup.appendChild(createButton(id, label, onNavigate))
+    );
 
-
-    buttons.forEach(({ id, label }) => {
-        const btn = document.createElement('button');
-        btn.id = id;
-        btn.textContent = label;
-
-        if (id === 'play') {
-            btn.onclick = () => onNavigate('play');
-        }
-        if (id === 'rules') {
-            btn.onclick = () => onNavigate('rules');
-        }
-        if (id === 'ranking') {
-            btn.onclick = () => onNavigate('ranking');
-        }
-        buttonGroup.appendChild(btn);
-    });
-
-    // Add buttons to container
     buttonContainer.appendChild(buttonGroup);
-
     return buttonContainer;
 }
 
-export function renderHomePage(onNavigate: (page: string) => void) {
-    // Create main container
+export function renderHomePage(onNavigate: NavigateFn): HTMLElement {
     const container = document.createElement('div');
     container.className = 'homepage-container';
 
-    // Main title
     container.appendChild(createTitle());
-
-
-    // Add button container to main container
     container.appendChild(createButtonContainer(onNavigate));
-
-    // Create footer
     container.appendChild(createFooter());
 
     return container;
