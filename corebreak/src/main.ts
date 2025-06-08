@@ -1,26 +1,29 @@
-import { renderHomePage } from './presentation/pages/homepage.ts';
-import { renderPlayPage } from './presentation/pages/play.ts';
-import { renderRulesPage } from './presentation/pages/rules.ts';
-import { renderRankingPage } from './presentation/pages/ranking.ts';
+import { HomePage } from './presentation/pages/homepage.ts';
+import { PlayPage } from './presentation/pages/play.ts';
+import { RulesPage } from './presentation/pages/rules.ts';
+import { RankingPage } from './presentation/pages/ranking.ts';
 
 const app = document.getElementById('app');
 
-function renderPage(page) {
-    app.innerHTML = ''; // Vide le conteneur
+function renderPage(page: string) {
+    app.innerHTML = '';
+    let view;
+
     switch (page) {
         case 'play':
-            app.appendChild(renderPlayPage(renderPage));
+            view = new PlayPage();
             break;
         case 'rules':
-            app.appendChild(renderRulesPage(renderPage));
+            view = new RulesPage();
             break;
         case 'ranking':
-            app.appendChild(renderRankingPage(renderPage));
+            view = new RankingPage();
             break;
         default:
-            app.appendChild(renderHomePage(renderPage));
+            view = new HomePage();
     }
+
+    app.appendChild(view.render(renderPage));
 }
 
-// Affiche la page d’accueil au chargement
 renderPage('home');
