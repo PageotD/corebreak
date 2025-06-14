@@ -25,14 +25,14 @@ function renderPage(page: string) {
             console.log('ranking page');
             view = new RankingPage();
             break;
-        case 'home':
+        case 'connect':
+            console.log('connect page');
+            view = new LoginPage();
+            break;
+        default:
             console.log('home page');
             view = new HomePage();
             break;
-        case 'login':
-        default:
-            console.log('login page');
-            view = new LoginPage();
     }
 
     app!.appendChild(view.render(renderPage));

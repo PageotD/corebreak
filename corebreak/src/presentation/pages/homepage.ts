@@ -4,6 +4,19 @@ import footerHTML from '../../data/local/footer.html?raw';
 type NavigateFn = (page: string) => void;
 
 export class HomePage {
+
+    private createConnectionButton(): HTMLElement {
+        const button = document.createElement('button');
+        button.className = 'connection-button';
+        button.id = 'connection-button';
+        if (window.localStorage.getItem('token')) {
+            button.textContent = 'Log out';
+        } else {
+            button.textContent = 'Log in';
+        }
+        return button;
+    }
+
     private createTitle(): HTMLElement {
         const title = document.createElement('h1');
         title.textContent = 'CoreBreak';
@@ -34,6 +47,7 @@ export class HomePage {
 
         const buttons = [
             { id: 'play', label: 'Play' },
+            { id: 'connect', label: 'Connect' },
             { id: 'rules', label: 'Rules' },
             { id: 'ranking', label: 'Ranking' }
         ];
@@ -49,7 +63,9 @@ export class HomePage {
     public render(onNavigate: NavigateFn): HTMLElement {
         const container = document.createElement('div');
         container.className = 'homepage-container';
+        container.id = 'homepage';
 
+        //container.appendChild(this.createConnectionButton());
         container.appendChild(this.createTitle());
         container.appendChild(this.createButtonContainer(onNavigate));
         container.appendChild(this.createFooter());
